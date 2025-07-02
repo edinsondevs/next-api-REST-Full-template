@@ -114,7 +114,8 @@ export default async function handler(
        */
       try {
         const deletedItem = await Item.deleteOne({ _id: id });
-        if (!deletedItem) {
+        console.log(deletedItem)
+        if (deletedItem.deletedCount === 0) {
           return res.status(404).json({ success: false });
         }
         res.status(204).json({ success: true, data: {} });
