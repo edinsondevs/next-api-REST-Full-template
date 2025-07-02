@@ -6,25 +6,37 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
+    "jest-environment-jsdom": "^30.0.2",
     "mongoose": "^8.16.1",
     "next": "14.2.5",
     "next-swagger-doc": "^0.4.1",
+    "node-mocks-http": "^1.17.2",
     "react": "^18",
     "react-dom": "^18",
     "swagger-ui-react": "^5.25.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.7",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-typescript": "^7.27.1",
+    "@jest/globals": "^30.0.3",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/swagger-ui-react": "^5.18.0",
+    "babel-jest": "^30.0.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
+    "jest": "^30.0.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
