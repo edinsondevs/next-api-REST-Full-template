@@ -14,7 +14,11 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 function ApiDoc({ spec }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <SwaggerUI spec={spec} />;
+  return <SwaggerUI spec={spec} 
+    docExpansion="none"
+    defaultModelsExpandDepth={-1}
+    filter={true}
+  />;
 }
 
 export default ApiDoc;

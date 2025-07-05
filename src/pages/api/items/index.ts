@@ -56,9 +56,13 @@ export default async function handler(
 			 *         content:
 			 *           application/json:
 			 *             schema:
-			 *               $ref: '#/components/schemas/Item'
+			 *               $ref: '#/components/schemas/ItemPostSuccess'
 			 *       400:
 			 *         description: Bad request
+			 *         content:
+			 *           application/json:
+			 *             schema:
+			 *               $ref: '#/components/schemas/Error400'
 			 */
 
 			try {

@@ -1,12 +1,22 @@
-// import { Item, User, Error400, Error404 } from "./schemas";
+import {
+	Error400,
+	Error401,
+	Error403,
+	Error404,
+	Error500,
+	Item,
+	ItemPostSuccess,
+	Success200,
+	Success201,
+	Success204,
+	User,
+} from "./schemas";
 
-import { Error400, Error404 } from "./schemas/Error.schema";
-import { Item } from "./schemas/Item.schema";
 
 export const swaggerDefinition = {
 	openapi: "3.0.0",
 	info: {
-		title: "Plantilla de API Next.js",
+		title: "Plantilla de API Next.js",        
 		version: "1.0.0",
 		description:
 			"Una plantilla para crear APIs RESTful con Next.js, MongoDB y Swagger.",
@@ -24,9 +34,19 @@ export const swaggerDefinition = {
 	components: {
 		schemas: {
 			Item,
-			// Users,
+            ItemPostSuccess,
+			User,
+
+            // Mensajes Genericos de exito
+            Success200,
+            Success201,
+            Success204,
+            // Mensajes Genericos de error
 			Error400,
+			Error401,
+			Error403,
 			Error404,
+            Error500,
 		},
 	},
 };
