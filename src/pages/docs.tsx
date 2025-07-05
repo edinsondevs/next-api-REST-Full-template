@@ -2,13 +2,14 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import SwaggerUI from 'swagger-ui-react';
 import 'swagger-ui-react/swagger-ui.css';
+import swaggerSpec from '../swagger/index'; 
 
 export const getStaticProps: GetStaticProps = async () => {
-  const spec = require('../../swagger.js');
+  
   return {
-    props: {
-      spec,
-    },
+		props: {
+			spec: swaggerSpec,
+		},
   };
 };
 
