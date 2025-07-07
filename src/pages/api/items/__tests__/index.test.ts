@@ -44,6 +44,9 @@ describe("/api/items", () => {
 		const newItem = {
 			name: "New Item",
 			description: "Description of new item",
+			phone: 1234567890,
+			email: "email@example.com",
+			gender: "masculino",
 		};
 		// Simular el elemento creado con un ID
 		const createdItem = { _id: "123", ...newItem };

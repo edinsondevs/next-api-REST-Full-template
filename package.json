@@ -18,7 +18,8 @@
     "node-mocks-http": "^1.17.2",
     "react": "^18",
     "react-dom": "^18",
-    "swagger-ui-react": "^5.25.4"
+    "swagger-ui-react": "^5.25.4",
+    "zod": "^3.25.74"
   },
   "devDependencies": {
     "@babel/core": "^7.27.7",
