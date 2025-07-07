@@ -1,7 +1,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import swaggerJsdoc from '../../swagger.js';
+import swaggerSpec from '../../swagger/index'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json(swaggerJsdoc);
+  res.status(200).json(swaggerSpec);
 }
