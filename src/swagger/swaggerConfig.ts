@@ -16,6 +16,9 @@ import {
  * Contiene la información general de la API (título, versión, descripción),
  * la configuración de los servidores y los componentes reutilizables como los esquemas.
  */
+
+const url = process.env.MONGODB_URI || "";
+
 export const swaggerDefinition = {
 	openapi: "3.0.0",
 	info: {
@@ -26,8 +29,8 @@ export const swaggerDefinition = {
 	},
 	servers: [
 		{
-			url: "http://localhost:3000/api",
-			description: "Servidor de desarrollo",
+			url: url,
+			description: "Base URL de la base de datos MongoDB",
 		}
 	],
 	components: {
