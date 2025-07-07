@@ -27,8 +27,8 @@ export const swaggerDefinition = {
 	},
 	servers: [
 		{
-			url: "URL de la base de datos",
-			description: "MongoDB",
+			url: "api/",
+			description: "URL de la base de datos MongoDB",
 		},
 	],
 	components: {
