@@ -1,24 +1,24 @@
-
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import SwaggerUI from 'swagger-ui-react';
-import 'swagger-ui-react/swagger-ui.css';
-import swaggerSpec from '../swagger/index'; 
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import SwaggerUI from "swagger-ui-react";
+import "swagger-ui-react/swagger-ui.css";
+import swaggerSpec from "../swagger/index";
 
 export const getStaticProps: GetStaticProps = async () => {
-  
-  return {
+	return {
 		props: {
 			spec: swaggerSpec,
 		},
-  };
+	};
 };
 
 function ApiDoc({ spec }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <SwaggerUI spec={spec} 
-    docExpansion="none"
-    defaultModelsExpandDepth={-1}
-    filter={true}
-  />;
+	return (
+		<SwaggerUI
+			spec={spec}
+			docExpansion='list'
+			defaultModelsExpandDepth={-1}
+		/>
+	);
 }
 
 export default ApiDoc;

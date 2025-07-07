@@ -2,14 +2,28 @@ import { createRequest, createResponse } from "node-mocks-http";
 import handler from "../[id]";
 import dbConnect from "@/lib/dbConnect";
 import Item from "@/schemas/Item";
+import mongoose from "mongoose";
 
 jest.mock("@/lib/dbConnect");
-jest.mock("@/models/Item");
+jest.mock("@/schemas/Item", () => ({
+	findById: jest.fn(),
+	findByIdAndUpdate: jest.fn(),
+	deleteOne: jest.fn(),
+}));
+jest.mock("mongoose", () => ({
+	...jest.requireActual("mongoose"),
+	Types: {
+		ObjectId: {
+			isValid: jest.fn(),
+		},
+	},
+}));
 
 describe("/api/items/[id]", () => {
 	beforeEach(() => {
 		// Limpiar todos los mocks antes de cada prueba para asegurar un estado limpio
 		jest.clearAllMocks();
+		(mongoose.Types.ObjectId.isValid as jest.Mock).mockReturnValue(true);
 	});
 
 	it("should return an item by ID on GET", async () => {
@@ -63,7 +77,7 @@ describe("/api/items/[id]", () => {
 		// Asegurarse de que el código de estado es 404 (No encontrado)
 		expect(res._getStatusCode()).toBe(404);
 		// Asegurarse de que los datos JSON devueltos indican fallo
-		expect(res._getJSONData()).toEqual({ success: false });
+		expect(res._getJSONData()).toEqual({ success: false, error: "Data not Found" });
 	});
 
 	it("should update an item on PUT", async () => {
@@ -134,7 +148,7 @@ describe("/api/items/[id]", () => {
 		// Asegurarse de que el código de estado es 404 (No encontrado)
 		expect(res._getStatusCode()).toBe(404);
 		// Asegurarse de que los datos JSON devueltos indican fallo
-		expect(res._getJSONData()).toEqual({ success: false });
+		expect(res._getJSONData()).toEqual({ success: false, error: "Data not Found" });
 	});
 
 	it("should delete an item on DELETE", async () => {
@@ -158,9 +172,12 @@ describe("/api/items/[id]", () => {
 		// Asegurarse de que Item.deleteOne fue llamado con el ID correcto
 		expect(Item.deleteOne).toHaveBeenCalledWith({ _id: "123" });
 		// Asegurarse de que el código de estado es 204 (Sin contenido)
-		expect(res._getStatusCode()).toBe(204);
+		expect(res._getStatusCode()).toBe(200);
 		// Asegurarse de que los datos JSON devueltos están vacíos
-		expect(res._getJSONData()).toEqual({ success: true, data: {} });
+		expect(res._getJSONData()).toEqual({
+			success: true,
+			data: { info: "Item deleted successfully" },
+		});
 	});
 
 	it("should return 404 if item not found on DELETE", async () => {
@@ -186,7 +203,7 @@ describe("/api/items/[id]", () => {
 		// Asegurarse de que el código de estado es 404 (No encontrado)
 		expect(res._getStatusCode()).toBe(404);
 		// Asegurarse de que los datos JSON devueltos indican fallo
-		expect(res._getJSONData()).toEqual({ success: false });
+		expect(res._getJSONData()).toEqual({ success: false, error: "Data not Found" });
 	});
 
 	it("should return 405 for unsupported methods", async () => {

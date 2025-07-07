@@ -4,7 +4,7 @@ import dbConnect from "@/lib/dbConnect";
 import Item from "@/schemas/Item";
 
 jest.mock("@/lib/dbConnect");
-jest.mock("@/models/Item");
+jest.mock("@/schemas/Item");
 
 describe("/api/items", () => {
 	beforeEach(() => {

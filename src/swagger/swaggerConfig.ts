@@ -25,11 +25,7 @@ export const swaggerDefinition = {
 		{
 			url: "http://localhost:3000/api",
 			description: "Servidor de desarrollo",
-		},
-		{
-			url: "https://jsonplaceholder.typicode.com/",
-			description: "Servidor de producción de Pruebas JSONPlaceholder",
-		},
+		}
 	],
 	components: {
 		schemas: {
