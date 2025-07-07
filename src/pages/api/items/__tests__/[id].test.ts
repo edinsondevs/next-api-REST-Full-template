@@ -28,7 +28,13 @@ describe("/api/items/[id]", () => {
 
 	it("should return an item by ID on GET", async () => {
 		// Datos simulados para un elemento
-		const mockItem = { _id: "123", name: "Test Item" };
+		const mockItem = {
+			_id: "123",
+			name: "Test Item",
+			phone: 1234567890,
+			email: "email@example.com",
+			gender: "masculino",
+		};
 		// Simular el método Item.findById para que devuelva nuestro elemento simulado
 		(Item.findById as jest.Mock).mockResolvedValue(mockItem);
 
@@ -77,12 +83,21 @@ describe("/api/items/[id]", () => {
 		// Asegurarse de que el código de estado es 404 (No encontrado)
 		expect(res._getStatusCode()).toBe(404);
 		// Asegurarse de que los datos JSON devueltos indican fallo
-		expect(res._getJSONData()).toEqual({ success: false, error: "Data not Found" });
+		expect(res._getJSONData()).toEqual({
+			success: false,
+			error: "Data not Found",
+		});
 	});
 
 	it("should update an item on PUT", async () => {
 		// Datos actualizados para el elemento
-		const updatedItemData = { name: "Updated Item" };
+		const updatedItemData = {
+			name: "Updated Item",
+			description: "Updated description of item",
+			phone: 1234567890,
+			email: "email@example.com",
+			gender: "masculino",
+		};
 		// Simular el elemento actualizado con un ID
 		const mockUpdatedItem = { _id: "123", ...updatedItemData };
 		// Simular el método Item.findByIdAndUpdate para que devuelva el elemento actualizado
@@ -128,7 +143,13 @@ describe("/api/items/[id]", () => {
 		const req = createRequest({
 			method: "PUT",
 			query: { id: "123" },
-			body: { name: "Updated Item" },
+			body: {
+				name: "Updated Item",
+				description: "Updated description of item",
+				phone: 1234567890,
+				email: "email@example.com",
+				gender: "masculino",
+			},
 		});
 		// Crear un objeto de respuesta simulado
 		const res = createResponse();
@@ -142,13 +163,22 @@ describe("/api/items/[id]", () => {
 		// Asegurarse de que Item.findByIdAndUpdate fue llamado con los argumentos correctos
 		expect(Item.findByIdAndUpdate).toHaveBeenCalledWith(
 			"123",
-			{ name: "Updated Item" },
+			{
+				name: "Updated Item",
+				description: "Updated description of item",
+				phone: 1234567890,
+				email: "email@example.com",
+				gender: "masculino",
+			},
 			{ new: true, runValidators: true }
 		);
 		// Asegurarse de que el código de estado es 404 (No encontrado)
 		expect(res._getStatusCode()).toBe(404);
 		// Asegurarse de que los datos JSON devueltos indican fallo
-		expect(res._getJSONData()).toEqual({ success: false, error: "Data not Found" });
+		expect(res._getJSONData()).toEqual({
+			success: false,
+			error: "Data not Found",
+		});
 	});
 
 	it("should delete an item on DELETE", async () => {
@@ -171,9 +201,9 @@ describe("/api/items/[id]", () => {
 		expect(dbConnect).toHaveBeenCalledTimes(1);
 		// Asegurarse de que Item.deleteOne fue llamado con el ID correcto
 		expect(Item.deleteOne).toHaveBeenCalledWith({ _id: "123" });
-		// Asegurarse de que el código de estado es 204 (Sin contenido)
+		// Asegurarse de que el código de estado es 200 (OK)
 		expect(res._getStatusCode()).toBe(200);
-		// Asegurarse de que los datos JSON devueltos están vacíos
+		// Asegurarse de que los datos JSON devueltos coinciden con el mensaje de éxito
 		expect(res._getJSONData()).toEqual({
 			success: true,
 			data: { info: "Item deleted successfully" },
@@ -203,7 +233,10 @@ describe("/api/items/[id]", () => {
 		// Asegurarse de que el código de estado es 404 (No encontrado)
 		expect(res._getStatusCode()).toBe(404);
 		// Asegurarse de que los datos JSON devueltos indican fallo
-		expect(res._getJSONData()).toEqual({ success: false, error: "Data not Found" });
+		expect(res._getJSONData()).toEqual({
+			success: false,
+			error: "Data not Found",
+		});
 	});
 
 	it("should return 405 for unsupported methods", async () => {
