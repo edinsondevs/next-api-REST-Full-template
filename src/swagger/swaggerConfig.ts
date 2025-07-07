@@ -9,10 +9,13 @@ import {
 	Success200,
 	Success201,
 	Success204,
-	User,
 } from "./schemas";
 
-
+/**
+ * Definición principal de la configuración de Swagger (OpenAPI).
+ * Contiene la información general de la API (título, versión, descripción),
+ * la configuración de los servidores y los componentes reutilizables como los esquemas.
+ */
 export const swaggerDefinition = {
 	openapi: "3.0.0",
 	info: {
@@ -31,7 +34,6 @@ export const swaggerDefinition = {
 		schemas: {
 			Item,
             ItemPostSuccess,
-			User,
 
             // Mensajes Genericos de exito
             Success200,

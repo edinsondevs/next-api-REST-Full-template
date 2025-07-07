@@ -1,6 +1,6 @@
 
 import { IItem } from '@/Types/schemasTypes/itemInterface';
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const ItemSchema: Schema = new Schema(
 	{
@@ -13,6 +13,21 @@ const ItemSchema: Schema = new Schema(
 			type: String,
 			required: [true, "Please provide a description for this item."],
 			maxlength: [200, "Description cannot be more than 200 characters"],
+		},
+		phone: {
+			type: Number,
+			required: [true, "Please provide the phone number."],
+			maxlength: [20, "Phone number cannot be more than 20 characters"],
+		},
+		email: {
+			type: String,
+			required: [true, "Please provide the email."],
+			maxlength: [200, "Description mail valid"],
+		},
+		gender: {
+			type: String,
+			required: [true, "Please provide the gender."],
+			maxlength: [9],
 		},
 	},
 	{
