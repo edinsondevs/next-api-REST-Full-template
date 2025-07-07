@@ -10,7 +10,22 @@ export const Error400: ErrorInterface = {
 		success: { type: "boolean", example: false },
 		error: {
 			type: "string",
-			example: "Bad request.",
+			example: {
+				type: "object",
+				_errors: ["Data Not Found."],
+				phone: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				email: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				gender: {
+					type: "object",
+					_errors: ["Required"],
+				},
+			},
 		},
 	},
 };
@@ -25,7 +40,22 @@ export const Error404: ErrorInterface = {
 		success: { type: "boolean", example: false },
 		error: {
 			type: "string",
-			example: "Data Not Found.",
+			example: {
+				type: "object",
+				_errors: ["Data Not Found."],
+				phone: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				email: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				gender: {
+					type: "object",
+					_errors: ["Required"],
+				},
+			},
 		},
 	},
 };
@@ -40,7 +70,22 @@ export const Error500: ErrorInterface = {
 		success: { type: "boolean", example: false },
 		error: {
 			type: "string",
-			example: "Internal Server Error.",
+			example: {
+				type: "object",
+				_errors: ["Data Not Found."],
+				phone: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				email: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				gender: {
+					type: "object",
+					_errors: ["Required"],
+				},
+			},
 		},
 	},
 };
@@ -55,7 +100,22 @@ export const Error401: ErrorInterface = {
 		success: { type: "boolean", example: false },
 		error: {
 			type: "string",
-			example: "Unauthorized.",
+			example: {
+				type: "object",
+				_errors: ["Data Not Found."],
+				phone: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				email: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				gender: {
+					type: "object",
+					_errors: ["Required"],
+				},
+			},
 		},
 	},
 };
@@ -70,7 +130,22 @@ export const Error403: ErrorInterface = {
 		success: { type: "boolean", example: false },
 		error: {
 			type: "string",
-			example: "Forbidden.",
+			example: {
+				type: "object",
+				_errors: ["Data Not Found."],
+				phone: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				email: {
+					type: "object",
+					_errors: ["Required"],
+				},
+				gender: {
+					type: "object",
+					_errors: ["Required"],
+				},
+			},
 		},
 	},
 };

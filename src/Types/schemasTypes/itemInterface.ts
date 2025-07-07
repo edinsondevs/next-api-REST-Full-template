@@ -1,10 +1,9 @@
-import { Document } from 'mongoose';
+import { Document } from "mongoose";
 
 export interface IItem extends Document {
 	name: string;
 	description: string;
 }
-
 
 /**
  * Interfaz que representa un objeto de esquema de OpenAPI para un Item.
@@ -39,16 +38,34 @@ export interface SchemaItemPostSuccessInterface {
 	};
 }
 
-type ErrorTypes = "Internal Server Error." | "Bad request." | "Data Not Found." | "Unauthorized." | "Forbidden.";
+type ErrorTypes =
+	| "Internal Server Error."
+	| "Bad request."
+	| "Data Not Found."
+	| "Unauthorized."
+	| "Forbidden.";
 
 export interface ErrorInterface {
 	type: "object";
 	properties: {
 		success: { type: string; example: boolean };
-		error: { type: string; example: ErrorTypes };
+		error: {
+			type: string;
+			example?: {
+				type: string;
+				_errors?: string[];
+				phone?: { type: string, _errors: string[] };
+				email?: { type: string, _errors: string[] };
+				gender?: { type: string, _errors: string[] };
+			},
+		};
 	};
 }
-type SuccessTypes = "Success" | "Item deleted successfully" | "Item created successfully" | "Item updated successfully";
+type SuccessTypes =
+	| "Success"
+	| "Item deleted successfully"
+	| "Item created successfully"
+	| "Item updated successfully";
 
 export interface SuccessResponseInterface {
 	type: "object";
@@ -71,6 +88,6 @@ export interface ItemPostSuccessInterface {
 			example: {
 				info: string;
 			};
-		}
+		};
 	};
 }

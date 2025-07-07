@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/lib/dbConnect";
 import Item from "@/schemas/Item";
 import mongoose from "mongoose";
+import { itemSchema } from "@/schemas/itemValidation";
 
 export default async function handler(
 	req: NextApiRequest,
@@ -116,6 +117,14 @@ export default async function handler(
 						success: false,
 						error: "Bad Request",
 					});
+				}
+
+				const result = itemSchema.safeParse(req.body);
+
+				if (!result.success) {
+					return res
+						.status(400)
+						.json({ success: false, error: result.error.format() });
 				}
 				const item = await Item.findByIdAndUpdate(id, req.body, {
 					new: true,
