@@ -20,10 +20,10 @@ import {
 export const swaggerDefinition = {
 	openapi: "3.0.0",
 	info: {
-		title: "Plantilla de API Next.js",
+		title: "CRUD creado en Next.js y API Routes ",
 		version: "1.0.0",
 		description:
-			"Una plantilla para crear APIs RESTful con Next.js, MongoDB y Swagger.",
+			"APIs RESTful con Next.js, Jest, MongoDB, Mongoose y Swagger.",
 	},
 	servers: [
 		{
